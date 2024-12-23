@@ -94,6 +94,14 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        .result {
+            margin-top: 20px;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -101,6 +109,10 @@
         <h1>Destinize</h1>
         <p>Plan your next adventure effortlessly.</p>
         <form id="trip-form">
+            <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" id="source" name="source" placeholder="Enter your starting location" required>
+            </div>
             <div class="form-group">
                 <label for="budget">Budget (in USD)</label>
                 <input type="number" id="budget" name="budget" placeholder="Enter your budget" required>
@@ -122,9 +134,52 @@
             </div>
             <button type="submit">Plan My Trip</button>
         </form>
+        <div id="result" class="result" style="display: none;"></div>
         <div class="footer">
-            <p>&copy; 2024 Destinize. Made with <a href="#">love</a>.</p>
+            <p>&copy; 2024 Destinize</p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('trip-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const source = document.getElementById('source').value;
+            const budget = document.getElementById('budget').value;
+            const days = document.getElementById('days').value;
+            const travelType = document.getElementById('travel-type').value;
+            const destination = document.getElementById('destination').value;
+
+            const requestData = {
+                source,
+                budget,
+                days,
+                travel_type: travelType,
+                destination
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/planner', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `<h3>Your Trip Plan:</h3><p>${data.plan.replace(/\n/g, '<br>')}</p>`;
+                } else {
+                    alert(data.error || 'An error occurred while planning your trip.');
+                }
+            } catch (error) {
+                alert('Failed to connect to the server. Please try again later.');
+            }
+        });
+    </script>
 </body>
 </html>
