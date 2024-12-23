@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinize - Plan Your Trip</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff7e5f;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-align: left;
+            color: #e0e0e0;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+        }
+
+        input, select {
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        input::placeholder {
+            color: #888;
+        }
+
+        button {
+            background: #ff7e5f;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #eb5a3c;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .footer a {
+            color: #ff7e5f;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Destinize</h1>
+        <p>Plan your next adventure effortlessly.</p>
+        <form id="trip-form">
+            <div class="form-group">
+                <label for="budget">Budget (in USD)</label>
+                <input type="number" id="budget" name="budget" placeholder="Enter your budget" required>
+            </div>
+            <div class="form-group">
+                <label for="days">Number of Days</label>
+                <input type="number" id="days" name="days" placeholder="Enter number of days" required>
+            </div>
+            <div class="form-group">
+                <label for="travel-type">Travel Type</label>
+                <select id="travel-type" name="travel-type" required>
+                    <option value="touristy">Touristy</option>
+                    <option value="underrated">Underrated/Unexplored</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" name="destination" placeholder="Enter your destination" required>
+            </div>
+            <button type="submit">Plan My Trip</button>
+        </form>
+        <div class="footer">
+            <p>&copy; 2024 Destinize. Made with <a href="#">love</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
