@@ -29,7 +29,7 @@ def planner():
         prompt = (
             f"You are an expert tour guide. Plan a {days}-day trip from {source} to {destination} with a budget of ${budget}."
             f"The trip should focus on '{travel_type}' experiences. "
-            "Provide the top 5 must-visit destinations, recommended modes of transport (the one that's most feasible. e.g. if travelling from Chicago to NYC, train is an option but not feasible. SUGGEST FLIGHT AS THE MODE OF TRANSPORT FOR TRAVELS WHERE THE DISTANCE BETWEEN THE SOURCE AND DESTINATION IS MORE THAN 300 MILES), and a cost breakdown. Keep your responses succinct and under 5 sentences. Do not use asterisks."
+            "Provide the top 5 must-visit destinations, recommended modes of transport (the one that's most feasible. e.g. if travelling from Chicago to NYC, train is an option but not feasible. SUGGEST FLIGHT AS THE MODE OF TRANSPORT FOR TRAVELS WHERE THE DISTANCE BETWEEN THE SOURCE AND DESTINATION IS MORE THAN 300 MILES), and a cost breakdown. Keep your responses succinct and under 5 sentences. Do not use asterisks. KEEP THE TONE PROFESSIONAL."
         )
 
         # Call OpenAI API
